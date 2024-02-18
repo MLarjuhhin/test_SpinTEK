@@ -45,6 +45,7 @@ class HolidayController
 
     /**
      * Creates and returns an instance of DateListGeneratorService for the given year
+     *
      * @param  int  $year The year for which it is necessary to create a service for generating a list of holidays.
      * @return DateListGeneratorService Service for generating a list of holidays.
      */

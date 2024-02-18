@@ -64,6 +64,10 @@ A certain number of working days before the payday, the system sends a reminder.
    ```
 
 2.**📥Clone the Repository**
+```sh
+git@github.com:MLarjuhhin/test_SpinTEK.git
+cd test_SpinTEK
+```
 
 3.**🚀Start the docker Server**
 

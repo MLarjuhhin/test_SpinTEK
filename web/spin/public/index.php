@@ -1,8 +1,9 @@
 <?php
 
-use Foundation\Routing\Router;
+
 
 require_once __DIR__ . '/../config/bootstrap.php';
+/** @var Foundation\Routing\Router $router */
 $router = require_once __DIR__ . '/../config/routes.php';
 
 

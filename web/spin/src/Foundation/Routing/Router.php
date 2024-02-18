@@ -8,12 +8,12 @@ use Foundation\Http\Response;
 
 class Router
 {
-    // Добавление вспомогательного метода для ответа с ошибкой
+    // Adding a helper method for an error response
     private function errorResponse($statusCode, $message) {
         return new Response($statusCode, [], $message);
     }
 
-    public function handle($uri, $method)
+    public function handle(string $uri,string $method): Response
     {
         $path = substr(parse_url($uri, PHP_URL_PATH), 1);
         $segments = explode('/', $path);
@@ -36,8 +36,16 @@ class Router
                 return $this->errorResponse(404, 'Not Found');
         }
     }
+    /**
+     * Обрабатывает запрос на получение списка праздников за указанный год.
 
-    private function handleSchedule($year) {
+     *
+     * @param int $yearThe year for which the list of holidays is being requested.
+     * @return Response Returns a Response object data or an error message.
+     * @throws \Exception Exception
+     */
+    private function handleSchedule(int $year): Response
+    {
         try {
             $controller = new HolidayController();
             $data = $controller->getHolidays($year);
