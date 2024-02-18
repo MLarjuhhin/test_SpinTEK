@@ -1,1 +1,5 @@
 /web/spin/log/
+/web/spin/vendor/
+/web/spin/storage/
+/web/spin/.idea/
+.idea/
