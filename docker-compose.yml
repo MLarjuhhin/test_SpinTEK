@@ -1,0 +1,33 @@
+version: '3'
+networks:
+    spin:
+services:
+    web:
+        image: nginx:stable-alpine
+        volumes:
+            - "./etc/nginx/default.conf:/etc/nginx/conf.d/default.conf"
+            - "./etc/nginx/default.template.conf:/etc/nginx/conf.d/default.template"
+
+            - "./web/spin:/var/www/public/spin"
+        ports:
+            - "3000:80"
+        environment:
+            - NGINX_HOST=${NGINX_HOST}
+        command: /bin/sh -c "envsubst '$$NGINX_HOST' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+        restart: always
+        depends_on:
+            - php
+        networks:
+            - spin
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: always
+        working_dir: /var/www/public
+        volumes:
+            - "./web/spin:/var/www/public/spin"
+        environment:
+            - COMPOSER_MEMORY_LIMIT=-1
+        networks:
+            - spin
