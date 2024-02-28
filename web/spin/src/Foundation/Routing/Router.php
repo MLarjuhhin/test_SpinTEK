@@ -37,8 +37,7 @@ class Router
         }
     }
     /**
-     * Обрабатывает запрос на получение списка праздников за указанный год.
-
+     * Processes a request to obtain a list of holidays for the specified year.
      *
      * @param int $yearThe year for which the list of holidays is being requested.
      * @return Response Returns a Response object data or an error message.
